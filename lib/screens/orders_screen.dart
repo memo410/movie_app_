@@ -32,9 +32,10 @@ class OrdersScreen extends StatelessWidget {
               onAction: () => goToShellTab(ShellTab.menu),
             )
           : ListView.separated(
-              padding: const EdgeInsets.fromLTRB(Gap.md, Gap.md, Gap.md, Gap.xxl),
+              padding:
+                  const EdgeInsets.fromLTRB(Gap.md, Gap.md, Gap.md, Gap.xxl),
               itemCount: orders.length,
-              separatorBuilder: (_, _) => Gap.h12,
+              separatorBuilder: (_, __) => Gap.h12,
               itemBuilder: (context, index) => FadeSlideIn.staggered(
                 key: ValueKey(orders[index].id),
                 index: index,

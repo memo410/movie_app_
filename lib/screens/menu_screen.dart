@@ -54,13 +54,15 @@ class _MenuScreenState extends State<MenuScreen> {
         : MenuData.byCategory(_categoryId!);
 
     for (final filter in _filters) {
-      list = list.where((d) => switch (filter) {
-            MenuFilter.vegetarian => d.tags.contains(DishTag.vegetarian),
-            MenuFilter.spicy => d.tags.contains(DishTag.spicy),
-            MenuFilter.offers => d.isDiscounted,
-            MenuFilter.budget => d.effectivePrice < 150,
-            MenuFilter.quick => d.prepMinutes < 15,
-          }).toList();
+      list = list
+          .where((d) => switch (filter) {
+                MenuFilter.vegetarian => d.tags.contains(DishTag.vegetarian),
+                MenuFilter.spicy => d.tags.contains(DishTag.spicy),
+                MenuFilter.offers => d.isDiscounted,
+                MenuFilter.budget => d.effectivePrice < 150,
+                MenuFilter.quick => d.prepMinutes < 15,
+              })
+          .toList();
     }
 
     list.sort((a, b) => switch (_sort) {
@@ -115,7 +117,8 @@ class _MenuScreenState extends State<MenuScreen> {
               onSelect: (id) => setState(() => _categoryId = id),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(Gap.md, Gap.md, Gap.md, Gap.xs),
+              padding:
+                  const EdgeInsets.fromLTRB(Gap.md, Gap.md, Gap.md, Gap.xs),
               child: Row(
                 children: [
                   Expanded(
@@ -161,8 +164,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   ? EmptyState(
                       icon: Icons.filter_alt_off_rounded,
                       title: 'Nothing matches those filters',
-                      message:
-                          'Try removing a filter or switching to another '
+                      message: 'Try removing a filter or switching to another '
                           'category — there are ${MenuData.dishes.length} '
                           'dishes on the full menu.',
                       actionLabel: 'Clear filters',
@@ -264,7 +266,8 @@ class _CategoryTabs extends StatelessWidget {
       height: kMinTouchTarget + 12,
       child: ListView(
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: Gap.md, vertical: Gap.xs),
+        padding:
+            const EdgeInsets.symmetric(horizontal: Gap.md, vertical: Gap.xs),
         children: [
           CategoryChip(
             category: const MenuCategory(
@@ -299,7 +302,7 @@ class _DishList extends StatelessWidget {
     return ListView.separated(
       padding: const EdgeInsets.fromLTRB(Gap.md, Gap.xs, Gap.md, Gap.xxl),
       itemCount: dishes.length,
-      separatorBuilder: (_, _) => Gap.h12,
+      separatorBuilder: (_, __) => Gap.h12,
       itemBuilder: (context, index) {
         final dish = dishes[index];
         return FadeSlideIn.staggered(

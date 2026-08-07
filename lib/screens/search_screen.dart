@@ -87,7 +87,8 @@ class _SearchScreenState extends State<SearchScreen> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(Gap.xs, Gap.xs, Gap.md, Gap.xs),
+              padding:
+                  const EdgeInsets.fromLTRB(Gap.xs, Gap.xs, Gap.md, Gap.xs),
               child: Row(
                 children: [
                   IconButton(
@@ -169,7 +170,7 @@ class _SearchingList extends StatelessWidget {
     return ListView.separated(
       padding: const EdgeInsets.all(Gap.md),
       itemCount: 4,
-      separatorBuilder: (_, _) => Gap.h12,
+      separatorBuilder: (_, __) => Gap.h12,
       itemBuilder: (context, index) => const SoftCard(
         child: SizedBox(height: 104, child: Skeleton(height: 104)),
       ),
@@ -222,7 +223,8 @@ class _Suggestions extends StatelessWidget {
           children: [
             for (final term in MenuData.popularSearches)
               ActionChip(
-                avatar: const Icon(Icons.trending_up_rounded, size: IconSize.sm),
+                avatar:
+                    const Icon(Icons.trending_up_rounded, size: IconSize.sm),
                 label: Text(term),
                 onPressed: () => onPick(term),
               ),
@@ -271,7 +273,7 @@ class _Results extends StatelessWidget {
           child: ListView.separated(
             padding: const EdgeInsets.fromLTRB(Gap.md, Gap.xs, Gap.md, Gap.xxl),
             itemCount: dishes.length,
-            separatorBuilder: (_, _) => Gap.h12,
+            separatorBuilder: (_, __) => Gap.h12,
             itemBuilder: (context, index) {
               final dish = dishes[index];
               return FadeSlideIn.staggered(

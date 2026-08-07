@@ -123,11 +123,12 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.symmetric(horizontal: Gap.md),
               sliver: SliverList.separated(
                 itemCount: _loading ? 3 : MenuData.trending.length,
-                separatorBuilder: (_, _) => Gap.h12,
+                separatorBuilder: (_, __) => Gap.h12,
                 itemBuilder: (context, index) {
                   if (_loading) {
                     return const SoftCard(
-                      child: SizedBox(height: 104, child: Skeleton(height: 104)),
+                      child:
+                          SizedBox(height: 104, child: Skeleton(height: 104)),
                     );
                   }
                   final dish = MenuData.trending[index];
@@ -227,7 +228,8 @@ class _HomeAppBar extends StatelessWidget {
         ),
         IconButton(
           tooltip: 'Notifications',
-          onPressed: () => showAppSnack('You are all caught up — no new notifications.',
+          onPressed: () => showAppSnack(
+            'You are all caught up — no new notifications.',
             icon: Icons.notifications_none_rounded,
           ),
           icon: const Icon(Icons.notifications_none_rounded),
@@ -367,8 +369,8 @@ class _ActiveOrderBanner extends StatelessWidget {
                       builder: (context, value, _) => LinearProgressIndicator(
                         value: value,
                         minHeight: 5,
-                        backgroundColor: colors.onSecondaryContainer
-                            .withValues(alpha: 0.18),
+                        backgroundColor:
+                            colors.onSecondaryContainer.withValues(alpha: 0.18),
                         color: colors.secondary,
                       ),
                     ),
@@ -400,7 +402,8 @@ class _OfferCarouselState extends State<_OfferCarousel> {
   Timer? _timer;
   int _page = 0;
 
-  static const List<({String title, String subtitle, IconData icon})> _offers = [
+  static const List<({String title, String subtitle, IconData icon})> _offers =
+      [
     (
       title: '20% off tonight',
       subtitle: 'Use SAVORA20 at checkout on any order above EGP 250.',
@@ -513,7 +516,7 @@ class _CategoryStrip extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: Gap.md),
             itemCount: MenuData.categories.length,
-            separatorBuilder: (_, _) => Gap.w8,
+            separatorBuilder: (_, __) => Gap.w8,
             itemBuilder: (context, index) {
               final category = MenuData.categories[index];
               return FadeSlideIn.staggered(
@@ -524,7 +527,8 @@ class _CategoryStrip extends StatelessWidget {
                   selected: false,
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (_) => MenuScreen(initialCategoryId: category.id),
+                      builder: (_) =>
+                          MenuScreen(initialCategoryId: category.id),
                     ),
                   ),
                 ),
@@ -574,7 +578,7 @@ class _Rail extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: Gap.md),
               itemCount: loading ? 3 : dishes.length,
-              separatorBuilder: (_, _) => Gap.w12,
+              separatorBuilder: (_, __) => Gap.w12,
               itemBuilder: (context, index) {
                 if (loading) return const DishCardSkeleton();
                 final dish = dishes[index];
@@ -585,7 +589,8 @@ class _Rail extends StatelessWidget {
                   child: DishCard(
                     dish: dish,
                     heroPrefix: heroPrefix,
-                    onTap: () => openDish(context, dish, heroPrefix: heroPrefix),
+                    onTap: () =>
+                        openDish(context, dish, heroPrefix: heroPrefix),
                   ),
                 );
               },
