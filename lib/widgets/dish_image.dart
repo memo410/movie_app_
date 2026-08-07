@@ -35,7 +35,7 @@ class DishImage extends StatelessWidget {
                 if (progress == null) return child;
                 return _Loading(radius: radius);
               },
-              errorBuilder: (context, _, _) =>
+              errorBuilder: (context, __, ___) =>
                   _Fallback(dish: dish, iconScale: iconScale),
             ),
     );
@@ -43,7 +43,7 @@ class DishImage extends StatelessWidget {
     if (heroTag == null) return content;
     return Hero(
       tag: heroTag!,
-      flightShuttleBuilder: (_, animation, _, _, _) => FadeTransition(
+      flightShuttleBuilder: (_, animation, __, ___, ____) => FadeTransition(
         opacity: animation.drive(Tween(begin: 0.85, end: 1)),
         child: content,
       ),
