@@ -26,7 +26,8 @@ void quickAdd(BuildContext context, Dish dish) {
     size: dish.sizes.isEmpty ? null : dish.sizes[dish.sizes.length ~/ 2],
   );
   HapticFeedback.lightImpact();
-  showAppSnack('${dish.name} added to your cart',
+  showAppSnack(
+    '${dish.name} added to your cart',
     icon: Icons.shopping_bag_rounded,
     actionLabel: 'View cart',
     onAction: () => goToShellTab(ShellTab.cart),
@@ -166,8 +167,9 @@ class _DishDetailScreenState extends State<DishDetailScreen> {
                 Gap.h4,
                 FadeSlideIn(
                   delay: const Duration(milliseconds: 70),
-                  child: Text(dish.tagline, style: context.text.bodyLarge
-                      ?.copyWith(color: colors.onSurfaceVariant)),
+                  child: Text(dish.tagline,
+                      style: context.text.bodyLarge
+                          ?.copyWith(color: colors.onSurfaceVariant)),
                 ),
                 Gap.h16,
                 FadeSlideIn(
@@ -294,8 +296,10 @@ class _DishDetailScreenState extends State<DishDetailScreen> {
         total: _total,
         quantity: _quantity,
         adding: _adding,
-        onDecrement: () => setState(() => _quantity = (_quantity - 1).clamp(1, 20)),
-        onIncrement: () => setState(() => _quantity = (_quantity + 1).clamp(1, 20)),
+        onDecrement: () =>
+            setState(() => _quantity = (_quantity - 1).clamp(1, 20)),
+        onIncrement: () =>
+            setState(() => _quantity = (_quantity + 1).clamp(1, 20)),
         onAdd: _add,
       ),
     );
@@ -539,7 +543,7 @@ class _SimilarDishes extends StatelessWidget {
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: similar.length,
-            separatorBuilder: (_, _) => Gap.w12,
+            separatorBuilder: (_, __) => Gap.w12,
             itemBuilder: (context, index) => DishCard(
               dish: similar[index],
               heroPrefix: 'similar-${dish.id}',

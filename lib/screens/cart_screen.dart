@@ -120,7 +120,8 @@ class _CartScreenState extends State<CartScreen> {
         actions: [
           TextButton.icon(
             onPressed: _confirmClear,
-            icon: Icon(Icons.delete_outline_rounded, color: context.colors.error),
+            icon:
+                Icon(Icons.delete_outline_rounded, color: context.colors.error),
             label: Text(
               'Empty',
               style: TextStyle(color: context.colors.error),
@@ -154,7 +155,8 @@ class _CartScreenState extends State<CartScreen> {
             onRemove: () {
               state.removePromo();
               setState(() => _promoError = null);
-              showAppSnack('Promo code removed', icon: Icons.info_outline_rounded);
+              showAppSnack('Promo code removed',
+                  icon: Icons.info_outline_rounded);
             },
           ),
           Gap.h24,
@@ -163,7 +165,8 @@ class _CartScreenState extends State<CartScreen> {
           _Summary(state: state),
         ],
       ),
-      bottomNavigationBar: _CheckoutBar(total: state.total, count: state.cartCount),
+      bottomNavigationBar:
+          _CheckoutBar(total: state.total, count: state.cartCount),
     );
   }
 }
@@ -459,10 +462,7 @@ class _PromoField extends StatelessWidget {
 class _Suggestions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final inCart = AppScope.of(context)
-        .lines
-        .map((l) => l.dish.id)
-        .toSet();
+    final inCart = AppScope.of(context).lines.map((l) => l.dish.id).toSet();
     final suggestions = MenuData.byCategory('sides')
         .followedBy(MenuData.byCategory('drinks'))
         .where((d) => !inCart.contains(d.id))
@@ -481,7 +481,7 @@ class _Suggestions extends StatelessWidget {
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: suggestions.length,
-            separatorBuilder: (_, _) => Gap.w12,
+            separatorBuilder: (_, __) => Gap.w12,
             itemBuilder: (context, index) => DishCard(
               dish: suggestions[index],
               heroPrefix: 'cart-suggest',
